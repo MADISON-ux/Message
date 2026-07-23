@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +7,39 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="wrapper">
-        <h2 class="question">Ты пойдёшь со мной на свидание?</h2>
-        <img class="gif" alt="gif" src="https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif"/>
-        <div class="btn-group">
-            <button class="yes-btn">Yes</button>
-            <button class="no-btn">No</button>
+
+    <!-- ЭКРАН 1: ввод кода -->
+    <div class="wrapper" id="screen-code">
+        <h2 class="question">Введи код</h2>
+        <div class="code-group">
+            <input type="text" id="code-input" class="code-input" placeholder="Код..." autocomplete="off"/>
+            <button id="ok-btn" class="ok-btn">OK</button>
+        </div>
+        <p id="error-msg" class="error-msg">Неверный код, попробуй ещё раз</p>
+    </div>
+
+    <!-- ЭКРАН 2: результат (текст + карта) -->
+    <div class="wrapper hidden" id="screen-result">
+        <h2 class="question" id="result-title">Заголовок</h2>
+
+        <!-- TODO: сюда вставишь свой текст -->
+        <p class="result-text" id="result-text">
+            Здесь будет текст, который ты пришлёшь позже.
+        </p>
+
+        <!-- TODO: замени src на ссылку на нужное место (Google Maps -> "Поделиться" -> "Встроить карту") -->
+        <div class="map-wrapper">
+            <iframe
+                id="map-frame"
+                class="map-frame"
+                src="https://www.google.com/maps?q=Tashkent&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
