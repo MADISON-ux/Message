@@ -1,23 +1,32 @@
-const wrapper = document.querySelector(".wrapper");
-const question = document.querySelector(".question");
-const gif = document.querySelector(".gif");
-const yesBtn = document.querySelector(".yes-btn");
-const noBtn = document.querySelector(".no-btn");
+const CORRECT_CODE = "SEYLHELLO"; // <-- поменяешь код здесь, если понадобится
 
-yesBtn.addEventListener("click", () => {
-  question.innerHTML = "Тогда сходим в ботанический сад?";
-  gif.src =
-    "https://media.giphy.com/media/UMon0fuimoAN9ueUNP/giphy.gif";
+const screenCode = document.getElementById("screen-code");
+const screenResult = document.getElementById("screen-result");
+const codeInput = document.getElementById("code-input");
+const okBtn = document.getElementById("ok-btn");
+const errorMsg = document.getElementById("error-msg");
+
+function checkCode() {
+  const value = codeInput.value.trim().toUpperCase().replace(/\s+/g, "");
+
+  if (value === CORRECT_CODE) {
+    screenCode.classList.add("hidden");
+    screenResult.classList.remove("hidden");
+  } else {
+    errorMsg.classList.add("show");
+    codeInput.classList.add("shake");
+    setTimeout(() => codeInput.classList.remove("shake"), 400);
+  }
+}
+
+okBtn.addEventListener("click", checkCode);
+
+codeInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    checkCode();
+  }
 });
 
-noBtn.addEventListener("mouseover", () => {
-  const noBtnRect = noBtn.getBoundingClientRect();
-  const maxX = window.innerWidth - noBtnRect.width;
-  const maxY = window.innerHeight - noBtnRect.height;
-
-  const randomX = Math.floor(Math.random() * maxX);
-  const randomY = Math.floor(Math.random() * maxY);
-
-  noBtn.style.left = randomX + "px";
-  noBtn.style.top = randomY + "px";
+codeInput.addEventListener("input", () => {
+  errorMsg.classList.remove("show");
 });
