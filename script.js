@@ -1,4 +1,4 @@
-const CORRECT_CODE = "SEYLHELLO"; // <-- поменяешь код здесь, если понадобится
+const CORRECT_CODE = "SEYLHELILO"; // <-- поменяешь код здесь, если понадобится
 
 const screenCode = document.getElementById("screen-code");
 const screenResult = document.getElementById("screen-result");
