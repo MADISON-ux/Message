@@ -1,5 +1,4 @@
-*
-{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,11 +11,17 @@ body {
     min-height: 100vh;
     background: whitesmoke;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
 }
 
-.gif {
-    height: 100%;
+.wrapper {
     width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
 }
 
 h2 {
@@ -25,17 +30,35 @@ h2 {
     color: #e94d58;
     margin: 15px 0;
 }
-.btn-group {
-    width: 100%;
-    height: 50px;
+
+/* --- Экран 1: код --- */
+.code-group {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
 }
-button {
-    position: absolute;
-    width: 150px;
-    height: inherit;
+
+.code-input {
+    flex: 1;
+    max-width: 250px;
+    height: 50px;
+    padding: 0 16px;
+    font-size: 1.1em;
+    border: 2px solid #e94d58;
+    border-radius: 30px;
+    outline: none;
+    color: #333;
+}
+
+.code-input:focus {
+    border-color: #c93b46;
+}
+
+.ok-btn {
+    width: 100px;
+    height: 50px;
     color: white;
     font-size: 1.2em;
     border-radius: 30px;
@@ -43,14 +66,54 @@ button {
     cursor: pointer;
     box-shadow: 0 2px 4px gray;
     border: 2px solid #e94d58;
-    font-size: 1.2em;
-}
-button:nth-child(1) {
-    margin-left: -200px;
     background: #e94d58;
+    transition: transform 0.15s ease;
 }
-button:nth-child(2) {
-    margin-right: -200px;
-    background: white;
+
+.ok-btn:hover {
+    transform: scale(1.05);
+}
+
+.error-msg {
+    margin-top: 15px;
     color: #e94d58;
+    font-size: 0.95em;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.error-msg.show {
+    opacity: 1;
+}
+
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}
+
+/* --- Экран 2: результат --- */
+.result-text {
+    margin: 15px 0 25px;
+    font-size: 1.05em;
+    color: #333;
+    line-height: 1.5;
+}
+
+.map-wrapper {
+    width: 100%;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.map-frame {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
